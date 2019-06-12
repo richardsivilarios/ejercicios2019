@@ -1,0 +1,13 @@
+ALTER TABLE familia.Hijo DROP CONSTRAINT FKHijo435143;
+DROP TABLE IF EXISTS familia.Madre CASCADE;
+DROP TABLE IF EXISTS familia.Hijo CASCADE;
+CREATE TABLE familia.Madre (Ci varchar(255) NOT NULL, Nombre varchar(255), Apellido varchar(255), PRIMARY KEY (Ci));
+CREATE TABLE familia.Hijo (Ci varchar(255) NOT NULL, MadreCi varchar(255) NOT NULL, Nombre varchar(255), PRIMARY KEY (Ci));
+ALTER TABLE familia.Hijo ADD CONSTRAINT FKHijo435143 FOREIGN KEY (MadreCi) REFERENCES familia.Madre (Ci);
+INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('1', 'Maria', 'Perez');
+INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('2', 'Martha', 'Copa');
+INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('3', 'Ana', 'Castellon');
+INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('1', '1', 'Pedro');
+INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('2', '1', 'Cecilia');
+INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('3', '2', 'Ricardo');
+INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('4', '3', 'Angel');
