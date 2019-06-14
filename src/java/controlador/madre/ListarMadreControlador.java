@@ -28,15 +28,18 @@ public class ListarMadreControlador {
   public ModelAndView listarGet(Model modelo){
       ModelAndView vista = new ModelAndView();
           
+     
+          Madre[] madres=null;
       try {
-          Madre[] madres = MadreDAO.listMadreByQuery(null,"nombre ASC");
+          madres = MadreDAO.listMadreByQuery(null,"nombre ASC");
+      } catch (PersistentException ex) {
+          Logger.getLogger(ListarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
+      }
           // select * from Madre 
           // where 
           // ci = 3
           modelo.addAttribute("mivariable",madres);
-      } catch (PersistentException ex) {
-          Logger.getLogger(ListarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
-      }
+      
       return vista;
   }
 }

@@ -25,25 +25,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ModificarMadreControlador {
     
   @RequestMapping(method=RequestMethod.GET)
-  public ModelAndView modificarmadre(@RequestParam("ci") String ci ){
+  public ModelAndView modificarmadre(@RequestParam("ci") String ci ) throws PersistentException{
       ModelAndView vista = new ModelAndView();
-      try {
+      
           
           vista.setViewName("modificarmadre");
           Madre m = MadreDAO.getMadreByORMID(ci);
           
           vista.addObject("madre",m);
           
-          return vista;
-      } catch (PersistentException ex) {
-          Logger.getLogger(ModificarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
-      }
+         
+     
       return vista;
   }
   @RequestMapping(method=RequestMethod.POST)
   public ModelAndView modificarMadrePOST(@ModelAttribute("madre") Madre pmadre) {
       ModelAndView vista = new ModelAndView();
-      try {
+      
           
           System.out.println("ci de la madre:"+pmadre.getCi());
           System.out.println("nombre de la madre:"+pmadre.getNombre());
@@ -51,11 +49,13 @@ public class ModificarMadreControlador {
           // insert into madre (ci,nombre,apellido) values 
           // :pmadre.get
           System.out.println("Los datos se modificaron");
+      try {
           MadreDAO.save(pmadre);
-          
       } catch (PersistentException ex) {
           Logger.getLogger(ModificarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
       }
+          
+     
       return vista;
   }
   

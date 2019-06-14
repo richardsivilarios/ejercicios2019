@@ -11,7 +11,9 @@
         <h1> Listar los datos de la madre </h1>
         <h1><a href="adicionarmadre.html">Adicionar </a>  </h1>
         <table border="1">
-            <tbody><th>ci</th><th>nombre</th><th>apellido</th><th>Mod</th><th>Borrar</th></tbody>
+            <tbody><th>ci</th><th>nombre</th><th>apellido</th><th>Mod</th><th>Borrar</th>
+        <th>Hijos</th>
+        </tbody>
         
         <c:forEach items="${mivariable}" var="dato" >
             <tr>
@@ -30,7 +32,10 @@
                 </td>
                 <td> 
                     <h1><a href="<c:url value="borrarmadre.html?ci=${dato.ci}"/>">Borr</a></h1>
-                </td>    
+                </td> 
+                 <td> 
+                    <h1><a href="<c:url value="listarhijo.html?ci=${dato.ci}"/>">Ver</a></h1>
+                </td> 
              </tr>
         </c:forEach>
         </table>  

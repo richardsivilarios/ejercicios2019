@@ -5,6 +5,7 @@
  */
 package controlador.hijo;
 
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.ModelAndView;
 import modelo.HijoDAO;
 import modelo.Hijo;
+import modelo.Madre;
+import modelo.MadreDAO;
 import org.orm.PersistentException;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author alumno
@@ -24,17 +28,22 @@ import org.orm.PersistentException;
 
 public class ListarHijoControlador {
       @RequestMapping(method=RequestMethod.GET)
-      public ModelAndView listarhijo(Model modelo){
+      public ModelAndView listarhijo(Model modelo, @RequestParam("ci") String mci){
           ModelAndView model = new ModelAndView();
-          Hijo[]  hijos = null;
+         System.out.println("carnet de identidad madre"+mci);
+          Madre madre = null;
           try {
-              hijos= HijoDAO.listHijoByQuery(null,null);
+              // me devuelve una madre 
+              madre = MadreDAO.getMadreByORMID(mci);
           } catch (PersistentException ex) {
               Logger.getLogger(ListarHijoControlador.class.getName()).log(Level.SEVERE, null, ex);
           }
           
-          modelo.addAttribute("mivariable",hijos);
+           modelo.addAttribute("mivariable",madre.hijos.toArray());
           
+          
+          
+       
       
          return model;
       }

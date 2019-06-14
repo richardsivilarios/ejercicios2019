@@ -27,32 +27,28 @@ public class BorrarMadreControlador {
   @RequestMapping(method=RequestMethod.GET)
   public ModelAndView borrarmadre(@RequestParam("ci") String ci ){
       ModelAndView vista = new ModelAndView();
+      vista.setViewName("borrarmadre");
+      Madre m=null;
       try {
-          
-          vista.setViewName("borrarmadre");
-          Madre m = MadreDAO.getMadreByORMID(ci);
-          
-          vista.addObject("madre",m);
-          
-          return vista;
+          m = MadreDAO.getMadreByORMID(ci);
       } catch (PersistentException ex) {
           Logger.getLogger(BorrarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
       }
+      vista.addObject("madre",m);
+      
       return vista;
   }
   @RequestMapping(method=RequestMethod.POST)
   public ModelAndView modificarMadrePOST(@ModelAttribute("madre") Madre pmadre) {
       ModelAndView vista = new ModelAndView();
+      System.out.println("ci de la madre:"+pmadre.getCi());
+      System.out.println("nombre de la madre:"+pmadre.getNombre());
+      System.out.println("apellido de la madre:"+pmadre.getApellido());
+      // insert into madre (ci,nombre,apellido) values
+      // :pmadre.get
+      System.out.println("Los datos se modificaron");
       try {
-          
-          System.out.println("ci de la madre:"+pmadre.getCi());
-          System.out.println("nombre de la madre:"+pmadre.getNombre());
-          System.out.println("apellido de la madre:"+pmadre.getApellido());
-          // insert into madre (ci,nombre,apellido) values 
-          // :pmadre.get
-          System.out.println("Los datos se modificaron");
           MadreDAO.delete(pmadre);
-          
       } catch (PersistentException ex) {
           Logger.getLogger(BorrarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
       }

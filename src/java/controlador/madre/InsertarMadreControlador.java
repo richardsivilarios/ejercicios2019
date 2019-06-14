@@ -40,18 +40,20 @@ public class InsertarMadreControlador {
   @RequestMapping(method=RequestMethod.POST)
   public ModelAndView adicionarMadrePOST(@ModelAttribute("madre") Madre pmadre) {
       ModelAndView vista = new ModelAndView();
-      try {
+     
           
           System.out.println("ci de la madre:"+pmadre.getCi());
           System.out.println("nombre de la madre:"+pmadre.getNombre());
           System.out.println("apellido de la madre:"+pmadre.getApellido());
-          // insert into madre (ci,nombre,apellido) values 
+      try {
+          // insert into madre (ci,nombre,apellido) values
           // :pmadre.get
           MadreDAO.save(pmadre);
-          
       } catch (PersistentException ex) {
           Logger.getLogger(InsertarMadreControlador.class.getName()).log(Level.SEVERE, null, ex);
       }
+          
+      
       return vista;
   }
   

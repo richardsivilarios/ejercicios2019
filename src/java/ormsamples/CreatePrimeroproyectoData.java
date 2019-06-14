@@ -14,13 +14,13 @@ public class CreatePrimeroproyectoData {
 			session.doWork(new org.hibernate.jdbc.Work() {
 				public void execute(java.sql.Connection conn) throws java.sql.SQLException {
 					java.sql.Statement statement = conn.createStatement();
-					statement.executeUpdate("INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('1', 'Maria', 'Perez')");
-					statement.executeUpdate("INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('2', 'Martha', 'Copa')");
-					statement.executeUpdate("INSERT INTO familia.Madre(Ci, Nombre, Apellido) VALUES ('3', 'Ana', 'Castellon')");
-					statement.executeUpdate("INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('1', '1', 'Pedro')");
-					statement.executeUpdate("INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('2', '1', 'Cecilia')");
-					statement.executeUpdate("INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('3', '2', 'Ricardo')");
-					statement.executeUpdate("INSERT INTO familia.Hijo(Ci, MadreCi, Nombre) VALUES ('4', '3', 'Angel')");
+					statement.executeUpdate("INSERT INTO Madre(Ci, Nombre, Apellido) VALUES ('1', 'Maria', 'Perez')");
+					statement.executeUpdate("INSERT INTO Madre(Ci, Nombre, Apellido) VALUES ('2', 'Martha', 'Copa')");
+					statement.executeUpdate("INSERT INTO Madre(Ci, Nombre, Apellido) VALUES ('3', 'Ana', 'Castellon')");
+					statement.executeUpdate("INSERT INTO Hijo(Ci, MadreCi, Nombre) VALUES ('1', '1', 'Pedro')");
+					statement.executeUpdate("INSERT INTO Hijo(Ci, MadreCi, Nombre) VALUES ('2', '1', 'Cecilia')");
+					statement.executeUpdate("INSERT INTO Hijo(Ci, MadreCi, Nombre) VALUES ('3', '2', 'Ricardo')");
+					statement.executeUpdate("INSERT INTO Hijo(Ci, MadreCi, Nombre) VALUES ('4', '3', 'Angel')");
 					statement.close();
 				}
 			});

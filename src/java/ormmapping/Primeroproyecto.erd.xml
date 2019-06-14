@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
-  <Entity name="Madre" schema="familia" Unlogged="false" PKClustered="0">
+  <Entity name="Madre" Unlogged="false" PKClustered="0">
     <Column name="Ci">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -36,7 +36,7 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="Hijo" schema="familia" Unlogged="false" PKClustered="0">
+  <Entity name="Hijo" Unlogged="false" PKClustered="0">
     <Column name="Ci">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -74,9 +74,7 @@
   </Entity>
   <ForeignKey name="FKHijo435143">
     <ReferenceTable>Hijo</ReferenceTable>
-    <ReferenceSchema>familia</ReferenceSchema>
     <ReferencedTable>Madre</ReferencedTable>
-    <ReferencedSchema>familia</ReferencedSchema>
     <Columns>
       <Column>MadreCi</Column>
     </Columns>
