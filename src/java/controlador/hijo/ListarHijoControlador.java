@@ -38,12 +38,14 @@ public class ListarHijoControlador {
           } catch (PersistentException ex) {
               Logger.getLogger(ListarHijoControlador.class.getName()).log(Level.SEVERE, null, ex);
           }
-          
+          // enviar todo en una sola variable
            modelo.addAttribute("mivariable",madre.hijos.toArray());
+           
+          modelo.addAttribute("lmadre",madre);
+           
           
           
-          
-       
+                 
       
          return model;
       }

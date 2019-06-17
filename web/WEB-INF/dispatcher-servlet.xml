@@ -25,6 +25,7 @@
                 <prop key="modificarmadre.html">formmodificarMadreControlador</prop>
                 <prop key="borrarmadre.html">formborrarMadreControlador</prop>
                 <prop key="listarhijo.html">formlistarHijoControlador</prop>
+                <prop key="modificarhijo.html">formmodificarHijoControlador</prop>
                 
             </props>
         </property>
@@ -46,5 +47,6 @@
     <bean name="formmodificarMadreControlador" class="controlador.madre.ModificarMadreControlador" />
     <bean name="formborrarMadreControlador" class="controlador.madre.BorrarMadreControlador" />
     <bean name="formlistarHijoControlador" class="controlador.hijo.ListarHijoControlador" />
+    <bean name="formmodificarHijoControlador" class="controlador.hijo.ModificarHijoControlador" />
     
 </beans>

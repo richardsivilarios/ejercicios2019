@@ -8,7 +8,10 @@
         <title>Listar Madre</title>
     </head>
     <body>
+        <c:out value="'La madre es': ${lmadre.getCi()} ${lmadre.getNombre()} ${lmadre.getApellido()} "></c:out>
+        <br>
         <h1> Listar los datos del hijo </h1>
+        
         <table border="1">
             <tbody><th>ci</th><th>nombre</th><th>Mod</th><th>Borrar</th>
         
@@ -24,7 +27,7 @@
              <h1><c:out value="${dato.getNombre()}"></c:out></h1>
                 </td>
                 <td> 
-                    <h1><a href="<c:url value="modificarmadre.html?ci=${dato.getCi()}"/>">Mod</a></h1>
+                    <h1><a href="<c:url value="modificarhijo.html?ci=${dato.getCi()}"/>">Mod</a></h1>
                 </td>
                 <td> 
                     <h1><a href="<c:url value="borrarmadre.html?ci=${dato.getCi()}"/>">Borr</a></h1>
