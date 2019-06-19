@@ -27,6 +27,7 @@ public class ModificarHijoControlador {
     
   @RequestMapping(method=RequestMethod.GET)
   public ModelAndView modificarhijo(@RequestParam("ci") String ci ) throws PersistentException{
+      // se modifico 19/06/2019 modificar
       ModelAndView vista = new ModelAndView();
       
           

@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ListarHijoControlador {
       @RequestMapping(method=RequestMethod.GET)
       public ModelAndView listarhijo(Model modelo, @RequestParam("ci") String mci){
+         // se modifico 19/06/2019
           ModelAndView model = new ModelAndView();
          System.out.println("carnet de identidad madre"+mci);
           Madre madre = null;
