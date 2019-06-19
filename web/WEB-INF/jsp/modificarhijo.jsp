@@ -9,8 +9,11 @@
     <body>
         <h1>Modificar un hijo</h1>
         <br>
+       
         <form:form action="modificarhijo.html" method="POST" commandName="hijo">
-            <form:label path="ci">CI</form:label>
+             <c:out value="'La madre es': ${hijo.getMadre().getCi()} ${hijo.getMadre().getNombre()}  "></c:out>
+             <br>
+             <form:label path="ci">CI</form:label>
             <form:input path="ci"></form:input>
             <br>
             <form:label path="nombre">Nombre</form:label>
