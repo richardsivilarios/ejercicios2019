@@ -35,7 +35,22 @@ public class Hijo implements Serializable {
 		return hashcode;
 	}
 	
+	private void this_setOwner(Object owner, int key) {
+		if (key == ORMConstants.KEY_HIJO_MADRE) {
+			this.madre = (modelo.Madre) owner;
+		}
+	}
+	
+	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
+		public void setOwner(Object owner, int key) {
+			this_setOwner(owner, key);
+		}
+		
+	};
+	
 	private String ci;
+	
+	private modelo.Madre madre;
 	
 	private String nombre;
 	
@@ -57,6 +72,30 @@ public class Hijo implements Serializable {
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public void setMadre(modelo.Madre value) {
+		if (madre != null) {
+			madre.hijos.remove(this);
+		}
+		if (value != null) {
+			value.hijos.add(this);
+		}
+	}
+	
+	public modelo.Madre getMadre() {
+		return madre;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Madre(modelo.Madre value) {
+		this.madre = value;
+	}
+	
+	private modelo.Madre getORM_Madre() {
+		return madre;
 	}
 	
 	public String toString() {

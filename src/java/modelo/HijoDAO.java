@@ -321,6 +321,39 @@ public class HijoDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(modelo.Hijo hijo)throws PersistentException {
+		try {
+			if (hijo.getMadre() != null) {
+				hijo.getMadre().hijos.remove(hijo);
+			}
+			
+			return delete(hijo);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(modelo.Hijo hijo, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if (hijo.getMadre() != null) {
+				hijo.getMadre().hijos.remove(hijo);
+			}
+			
+			try {
+				session.delete(hijo);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(modelo.Hijo hijo) throws PersistentException {
 		try {
 			PrimeroproyectoPersistentManager.instance().getSession().refresh(hijo);

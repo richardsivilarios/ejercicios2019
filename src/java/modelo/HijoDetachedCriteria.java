@@ -20,18 +20,28 @@ import org.orm.criteria.*;
 
 public class HijoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression ci;
+	public final StringExpression madreId;
+	public final AssociationExpression madre;
 	public final StringExpression nombre;
 	
 	public HijoDetachedCriteria() {
 		super(modelo.Hijo.class, modelo.HijoCriteria.class);
 		ci = new StringExpression("ci", this.getDetachedCriteria());
+		madreId = new StringExpression("madre.ci", this.getDetachedCriteria());
+		madre = new AssociationExpression("madre", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 	}
 	
 	public HijoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, modelo.HijoCriteria.class);
 		ci = new StringExpression("ci", this.getDetachedCriteria());
+		madreId = new StringExpression("madre.ci", this.getDetachedCriteria());
+		madre = new AssociationExpression("madre", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
+	}
+	
+	public MadreDetachedCriteria createMadreCriteria() {
+		return new MadreDetachedCriteria(createCriteria("madre"));
 	}
 	
 	public Hijo uniqueHijo(PersistentSession session) {

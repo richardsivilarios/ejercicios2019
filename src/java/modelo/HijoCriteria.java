@@ -20,11 +20,15 @@ import org.orm.criteria.*;
 
 public class HijoCriteria extends AbstractORMCriteria {
 	public final StringExpression ci;
+	public final StringExpression madreId;
+	public final AssociationExpression madre;
 	public final StringExpression nombre;
 	
 	public HijoCriteria(Criteria criteria) {
 		super(criteria);
 		ci = new StringExpression("ci", this);
+		madreId = new StringExpression("madre.ci", this);
+		madre = new AssociationExpression("madre", this);
 		nombre = new StringExpression("nombre", this);
 	}
 	
@@ -34,6 +38,10 @@ public class HijoCriteria extends AbstractORMCriteria {
 	
 	public HijoCriteria() throws PersistentException {
 		this(PrimeroproyectoPersistentManager.instance().getSession());
+	}
+	
+	public MadreCriteria createMadreCriteria() {
+		return new MadreCriteria(createCriteria("madre"));
 	}
 	
 	public Hijo uniqueHijo() {

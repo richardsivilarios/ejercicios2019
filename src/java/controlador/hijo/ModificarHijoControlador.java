@@ -33,7 +33,7 @@ public class ModificarHijoControlador {
           
           vista.setViewName("modificarhijo");
           Hijo m = HijoDAO.getHijoByORMID(ci);
-         
+          
           vista.addObject("hijo",m);
           
          

@@ -321,6 +321,39 @@ public class MadreDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(modelo.Madre madre)throws PersistentException {
+		try {
+			modelo.Hijo[] lHijoss = madre.hijos.toArray();
+			for(int i = 0; i < lHijoss.length; i++) {
+				lHijoss[i].setMadre(null);
+			}
+			return delete(madre);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(modelo.Madre madre, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			modelo.Hijo[] lHijoss = madre.hijos.toArray();
+			for(int i = 0; i < lHijoss.length; i++) {
+				lHijoss[i].setMadre(null);
+			}
+			try {
+				session.delete(madre);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(modelo.Madre madre) throws PersistentException {
 		try {
 			PrimeroproyectoPersistentManager.instance().getSession().refresh(madre);

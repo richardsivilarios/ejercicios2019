@@ -10,6 +10,8 @@ License Type: Evaluation
 			<generator class="assigned">
 			</generator>
 		</id>
+		<many-to-one name="madre" cascade="lock" column="MadreCi" class="modelo.Madre" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
 		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
 	</class>
 </hibernate-mapping>

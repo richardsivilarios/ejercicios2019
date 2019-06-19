@@ -94,7 +94,7 @@ public class Madre implements Serializable {
 		return ORM_hijos;
 	}
 	
-	public final modelo.HijoSetCollection hijos = new modelo.HijoSetCollection(this, _ormAdapter, ORMConstants.KEY_MADRE_HIJOS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final modelo.HijoSetCollection hijos = new modelo.HijoSetCollection(this, _ormAdapter, ORMConstants.KEY_MADRE_HIJOS, ORMConstants.KEY_HIJO_MADRE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getCi());

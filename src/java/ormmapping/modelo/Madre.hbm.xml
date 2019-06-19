@@ -12,7 +12,7 @@ License Type: Evaluation
 		</id>
 		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="apellido" column="Apellido" type="string" length="255" not-null="false" lazy="false"/>
-		<set name="ORM_Hijos" lazy="true" cascade="save-update,lock" inverse="false">
+		<set name="ORM_Hijos" lazy="true" cascade="save-update,lock" inverse="true">
 			<key column="MadreCi" not-null="true"/>
 			<one-to-many class="modelo.Hijo"/>
 		</set>

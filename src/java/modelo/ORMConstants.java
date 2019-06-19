@@ -14,6 +14,8 @@
 package modelo;
 
 public interface ORMConstants extends org.orm.util.ORMBaseConstants {
+	final int KEY_HIJO_MADRE = 538157098;
+	
 	final int KEY_MADRE_HIJOS = 209428305;
 	
 }
