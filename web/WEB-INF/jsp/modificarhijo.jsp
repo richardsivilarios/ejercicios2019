@@ -11,7 +11,7 @@
         <br>
        
         <form:form action="modificarhijo.html" method="POST" commandName="hijo">
-             <c:out value="'La madre es': ${hijo.getMadre().getCi()} ${hijo.getMadre().getNombre()}  "></c:out>
+             <c:out value="'La madre es': ${hijo.getMadre().getCi()} ${hijo.getMadre().getNombre()} ${hijo.getMadre().getApellido()}  "></c:out>
              <br>
              <form:label path="ci">CI</form:label>
             <form:input path="ci"></form:input>
