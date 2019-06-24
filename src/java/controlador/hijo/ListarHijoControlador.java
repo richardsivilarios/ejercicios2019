@@ -30,6 +30,7 @@ public class ListarHijoControlador {
       @RequestMapping(method=RequestMethod.GET)
       public ModelAndView listarhijo(Model modelo, @RequestParam("ci") String mci){
          // se modifico 19/06/2019
+         // modifico richardsivilarios
           ModelAndView model = new ModelAndView();
          System.out.println("carnet de identidad madre"+mci);
           Madre madre = null;
